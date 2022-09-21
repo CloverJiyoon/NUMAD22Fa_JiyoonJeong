@@ -7,20 +7,23 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/hello"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/hello"
+        android:layout_centerInParent="true"
+        android:onClick="onClick"
         android:text="About Me" />
 
     <Button
@@ -28,6 +31,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn1"
+        android:layout_centerInParent="true"
+        android:onClick="onClick"
         android:text="Location" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn2"
+        android:layout_centerInParent="true"
+        android:onClick="onClick"
+        android:text="Clicky Clicky" />
 
 </RelativeLayout>
