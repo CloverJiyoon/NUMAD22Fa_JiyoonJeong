@@ -11,7 +11,6 @@ import android.widget.Toast;
 public class ClickyActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView press;
-    Button btn_0 , btn_1 , btn_2 , btn_3 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +26,7 @@ public class ClickyActivity extends AppCompatActivity implements View.OnClickLis
         findViewById(R.id.button5).setOnClickListener(this);
         findViewById(R.id.button6).setOnClickListener(this);
 
+// Another way to declare buttons
 //        btn_0 = (Button)findViewById(R.id.button);
 //        btn_0.setOnClickListener(this);
 
