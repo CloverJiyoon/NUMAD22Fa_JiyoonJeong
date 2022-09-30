@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,9 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,8 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/hello"
         android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:onClick="onClick"
-        android:text="About Me" />
+        android:text="About Me"
+        app:layout_constraintBottom_toTopOf="@+id/btn2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello" />
 
     <Button
         android:id="@+id/btn2"
@@ -33,7 +40,11 @@
         android:layout_below="@id/btn1"
         android:layout_centerInParent="true"
         android:onClick="onClick"
-        android:text="Location" />
+        android:text="Location"
+        app:layout_constraintBottom_toTopOf="@+id/btn3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
     <Button
         android:id="@+id/btn3"
@@ -42,6 +53,25 @@
         android:layout_below="@id/btn2"
         android:layout_centerInParent="true"
         android:onClick="onClick"
-        android:text="Clicky Clicky" />
+        android:text="Clicky Clicky"
+        app:layout_constraintBottom_toTopOf="@+id/linkcollector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/linkcollector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn3"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:text="Link Collector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

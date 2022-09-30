@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             int theId = view.getId();
             if (theId == R.id.btn1) {
-                Toast.makeText(getApplicationContext(), "Name: Jiyoon Jeong\nEmail: wldbs8278@gmail.com", Toast.LENGTH_SHORT).show();
+                Aboutme();
             }
             if (theId == R.id.btn2) {
                 Toast.makeText(getApplicationContext(), "San Jose, CA", Toast.LENGTH_SHORT).show();
@@ -28,12 +28,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (theId == R.id.btn3) {
                 openClicky();
             }
+            if (theId == R.id.linkcollector) {
+                Linkcollector();
+            }
         }
 
         public void openClicky(){
             Intent intent = new Intent(this, ClickyActivity.class);
             startActivity(intent);
         }
+        public void Aboutme(){
+            Intent intent = new Intent(this, Aboutme.class);
+            startActivity(intent);
+        }
+        public void Linkcollector(){
+            Intent intent = new Intent(this, Linkcollector.class);
+            startActivity(intent);
+        }
+
 
 }
 
