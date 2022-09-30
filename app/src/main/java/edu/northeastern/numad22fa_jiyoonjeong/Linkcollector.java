@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -64,14 +65,20 @@ public class Linkcollector extends AppCompatActivity{
                 btsave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        name = etname.getText().toString();
-                        url = eturl.getText().toString();
+                        try {
+                            name = etname.getText().toString();
+                            url = eturl.getText().toString();
 
-                        linkList.add(new Link(name, url));
-                        dialog.dismiss();
+                            linkList.add(new Link(name, url));
+                            dialog.dismiss();
 
-                        //Associates the adapter with the RecyclerView
-                        listRecyclerView.setAdapter(new LinkAdapter(linkList, Linkcollector.this));
+                            //Associates the adapter with the RecyclerView
+                            listRecyclerView.setAdapter(new LinkAdapter(linkList, Linkcollector.this));
+                            showSnackbar("Successfully added a Link");
+                        } catch(Exception e){
+                            showSnackbar("Failed to add a Link");
+                        }
+
                     }
                 });
                 dialog.show();
@@ -116,5 +123,10 @@ public class Linkcollector extends AppCompatActivity{
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         savedInstanceState.getParcelableArrayList("linklist");
+    }
+
+    public void showSnackbar(String input){
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.coordinativelayout),input, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 }
