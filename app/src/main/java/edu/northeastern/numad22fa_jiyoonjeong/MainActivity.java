@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (theId == R.id.linkcollector) {
                 Linkcollector();
             }
+            if (theId == R.id.prime) {
+                PrimeDetector();
+            }
         }
 
         public void openClicky(){
@@ -43,6 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         public void Linkcollector(){
             Intent intent = new Intent(this, Linkcollector.class);
+            startActivity(intent);
+        }
+
+        public void PrimeDetector(){
+            Intent intent = new Intent(this, PrimeDetector.class);
             startActivity(intent);
         }
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PrimeDetector">
+
+    <Button
+        android:id="@+id/terminate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:onClick="setStopThread"
+        android:text="Terminate Search"
+        app:layout_constraintBottom_toTopOf="@+id/primeStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/findPrimes"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/findPrimes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:onClick="runOnRunnableThread"
+        android:text="Find Primes"
+        app:layout_constraintBottom_toTopOf="@+id/primeStatus"
+        app:layout_constraintEnd_toStartOf="@+id/terminate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <CheckBox
+        android:id="@+id/pacifier"
+        android:layout_width="135dp"
+        android:layout_height="58dp"
+        android:text="Pacifier Switch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentNumber"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/primeStatus"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:text="Current Prime Number: "
+        app:layout_constraintBottom_toTopOf="@+id/currentNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terminate"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/currentNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current number being checked :"
+        app:layout_constraintBottom_toTopOf="@+id/pacifier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/primeStatus"
+        app:layout_constraintVertical_bias="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
