@@ -2,11 +2,13 @@ package edu.northeastern.numad22fa_jiyoonjeong;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Location;
@@ -51,7 +53,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if(savedInstanceState != null){
             distance = savedInstanceState.getFloat("meter");
-            distanceView.setText("Distance : " + String.valueOf(distance));
+            distanceView.setText("Distance : " + String.valueOf(distance) + " meter");
         }
 
 
@@ -65,24 +67,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
         }
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, new LocationListener() {
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, new LocationListener() {
 
             @Override
             public void onLocationChanged(@NonNull Location location) {
                 if(start == null){
                     start = location;
+                    end = location;
+                    distance = 0 ;
                 }
 
                 if (oke) {
                     LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
                     mMap.addMarker(new MarkerOptions().position(loc).title("Location"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-                    lat.setText(String.valueOf(location.getLatitude()));
-                    lon.setText(String.valueOf(location.getLongitude()));
-                    distance = start.distanceTo(location);
-                    distanceView.setText("Distance : " + String.valueOf(distance));
-                    end = location;
-                }
+                    lat.setText("Latitude : " + String.valueOf(location.getLatitude()));
+                    lon.setText("Longitude : " + String.valueOf(location.getLongitude()));
+
+                    if(end.distanceTo(location) > 0.03){
+                        distance = distance + end.distanceTo(location);
+                        end = location;
+                    }
+//                    distance = start.distanceTo(location);
+                    distanceView.setText("Distance : " + String.valueOf(distance)  + " meter");
+
+            }
 
             }
         });
@@ -96,9 +105,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     {
         int theId = view.getId();
         if (theId == R.id.reset) {
-            start = end;
+            start = null;
             distance = 0;
-            distanceView.setText("Distance : " + String.valueOf(distance));
+            distanceView.setText("Distance : " + String.valueOf(distance)  + " meter");
         }
     }
 
@@ -113,6 +122,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onRestoreInstanceState(savedInstanceState);
         savedInstanceState.getFloat("meter");
     }
+
+
+
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("You will loose the total distance");
+        builder.setMessage("Do you really want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.85);
+        int height = (int) (getResources().getDisplayMetrics().widthPixels * 0.35);
+        alertDialog.getWindow().setLayout(width, height);
+    }
+
+
+
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

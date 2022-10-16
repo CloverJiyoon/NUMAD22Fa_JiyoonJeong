@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/distance"
-        android:layout_width="236dp"
-        android:layout_height="53dp"
+        android:layout_width="247dp"
+        android:layout_height="47dp"
         android:layout_below="@+id/latitude"
         android:clickable="true"
         android:padding="15dp"
@@ -37,7 +37,8 @@
     <TextView
         android:id="@+id/latitude"
         android:layout_width="256dp"
-        android:layout_height="43dp"
+        android:layout_height="47dp"
+        android:padding="15dp"
         android:text="Latitude"
         map:layout_constraintBottom_toTopOf="@+id/longitude"
         map:layout_constraintEnd_toEndOf="parent"

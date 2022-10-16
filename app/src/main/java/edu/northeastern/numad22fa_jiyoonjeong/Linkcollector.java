@@ -37,15 +37,15 @@ public class Linkcollector extends AppCompatActivity{
         //Instantiate the arraylist
         linkList = new ArrayList<>();
         add = findViewById(R.id.floating_add);
-        if(savedInstanceState != null){
-            linkList = savedInstanceState.getParcelableArrayList("linklist");
-        }
+
 
         // initializing our adapter class with our array list and context.
         recyclerViewAdapter = new LinkAdapter(linkList, this);
         listRecyclerView = findViewById(R.id.link_recycler_view);
         //This defines the way in which the RecyclerView is oriented
-        listRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        listRecyclerView.setLayoutManager(new LinearLayoutManager(this));        if(savedInstanceState != null){
+            linkList = savedInstanceState.getParcelableArrayList("linklist");
+        }
 
         //Associates the adapter with the RecyclerView
         listRecyclerView.setAdapter(recyclerViewAdapter);
