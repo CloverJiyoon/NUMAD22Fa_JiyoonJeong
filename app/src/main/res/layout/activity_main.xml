@@ -39,7 +39,7 @@
         android:layout_below="@id/btn1"
         android:layout_centerInParent="true"
         android:onClick="onClick"
-        android:text="Location"
+        android:text="Address"
         app:layout_constraintBottom_toTopOf="@+id/btn3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,9 +79,20 @@
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="Prime Directive"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linkcollector" />
+
+    <Button
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

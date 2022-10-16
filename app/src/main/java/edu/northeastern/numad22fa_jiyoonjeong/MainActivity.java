@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (theId == R.id.prime) {
                 PrimeDetector();
             }
+            if (theId == R.id.location) {
+                getLocation();
+            }
         }
 
         public void openClicky(){
@@ -51,6 +54,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         public void PrimeDetector(){
             Intent intent = new Intent(this, PrimeDetector.class);
+            startActivity(intent);
+        }
+        public void getLocation(){
+            Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
         }
 
